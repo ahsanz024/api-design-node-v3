@@ -68,6 +68,16 @@ app.post('/', (req, res) => {
   })
 })
 
+// separate router
+const apiRouter = express.Router()
+apiRouter.get('/test', (req, res) => {
+  res.send({
+    message: 'API router working'
+  })
+})
+
+app.use('/api', apiRouter)
+
 export const start = () => {
   app.listen(3000, () => {
     console.log('Server is running')
