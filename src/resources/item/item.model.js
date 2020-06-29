@@ -29,4 +29,16 @@ const itemSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
+
+// Compound Index
+// Item model is index by list-name
+itemSchema.index(
+  {
+    list: 1,
+    name: 1
+  },
+  {
+    unique: true
+  }
+)
 export const Item = mongoose.model('item', itemSchema)
